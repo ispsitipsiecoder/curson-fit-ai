@@ -1,4 +1,6 @@
-from fastapi import FastAPI, Depends, HTTPException, status, Body, Query
+import os
+import requests
+from fastapi import FastAPI, Depends, HTTPException, status, Body, Query, APIRouter
 from sqlalchemy.orm import Session
 from . import models, schemas, crud, auth
 from .database import SessionLocal, engine
@@ -148,3 +150,19 @@ def nutrition_progress(
             totals["fats"] += m.fats or 0
         results.append(totals)
     return results 
+
+router = APIRouter()
+GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY")
+
+@router.get("/gemini-search")
+def gemini_search(query: str):
+    url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent"
+    headers = {"Content-Type": "application/json"}
+    params = {"key": GEMINI_API_KEY}
+    data = {
+        "contents": [{"parts": [{"text": query}]}]
+    }
+    response = requests.post(url, headers=headers, params=params, json=data)
+    return response.json()
+
+app.include_router(router) 
