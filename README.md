@@ -1,56 +1,106 @@
-# 🧠 FitFuel AI
+# 🏋️‍♂️ Curson Fit AI
 
-**FitFuel AI** is a comprehensive, AI-powered fitness and nutrition platform designed to deliver personalized health and wellness recommendations. Built with Python, FastAPI, and machine learning, FitFuel AI empowers users to achieve their fitness goals through intelligent automation and seamless user experience.
+Curson Fit AI is a full-stack fitness and nutrition platform with AI-powered features. It helps users manage workouts, track nutrition, plan meals, monitor progress, and interact with an AI Assistant (powered by Gemini). The project uses a FastAPI backend, a React frontend, and is containerized with Docker for easy deployment.
 
 ---
 
 ## 🚀 Overview
-FitFuel AI combines advanced machine learning with a robust backend and modern frontend to provide:
-- Personalized fitness and nutrition recommendations
-- Secure user management
-- Real-time tracking and progress monitoring
-- Interactive and user-friendly interfaces
-
----
-
-## 🏋️‍♂️ Key Features
-- **User Registration & Login:** Secure sign-up and authentication with JWT.
-- **Personalized Dashboard:** Central hub for tracking fitness, nutrition, and progress.
-- **Workout Library:** AI-curated exercises and routines tailored to user goals.
-- **Nutrition Tracker:** Log meals and monitor daily intake with smart suggestions.
-- **Meal Planning:** AI-generated meal plans based on dietary preferences and fitness objectives.
-- **Progress Tracking:** Visualize achievements and receive adaptive recommendations.
-- **AI Everywhere:** All features leverage AI for smarter, more effective guidance.
+Curson Fit AI provides:
+- User registration and login
+- Workout library and management
+- Nutrition tracking and meal planning
+- Progress monitoring
+- AI Assistant (Gemini) for smart Q&A
 
 ---
 
 ## 🛠️ Technologies Used
-- **Backend:** Python, FastAPI, SQLAlchemy, SQL database
-- **Frontend:** React (API-driven, modern UI)
-- **Authentication:** JWT-based secure user management
-- **Machine Learning:** Deep learning models for nutrition and fitness recommendations
+- **Backend:** Python, FastAPI, SQLAlchemy, SQLite (default)
+- **Frontend:** React (JavaScript)
+- **AI Integration:** Gemini API (Google Generative Language)
+- **Containerization:** Docker, Docker Compose
+- **Authentication:** JWT-based user management
 
 ---
 
-## ⚙️ How It Works
-1. **User Onboarding:** Register and log in securely.
-2. **Profile Setup:** Enter details like age, weight, height, gender, activity level, and fitness goals.
-3. **AI Recommendations:** Receive personalized calorie, macronutrient, workout, and meal suggestions.
-4. **Track & Plan:** Log workouts, meals, and monitor progress via the dashboard.
-5. **Continuous Improvement:** AI adapts recommendations based on user history and feedback.
+## 📦 Project Structure
+```
+backend/
+  app/
+    main.py           # FastAPI app, Gemini integration
+    ...
+  requirements.txt
+  Dockerfile
+frontend/
+  src/
+    App.js
+    pages/
+      AIAssistant.js  # Gemini AI Assistant page
+      ...
+  package.json
+  Dockerfile
+docker-compose.yml
+README.md
+```
 
 ---
 
-## 🌟 Expansion Ideas
-- Integration with fitness wearables
-- Virtual personal training
-- Social features and community challenges
+## ⚙️ How to Run Locally
+
+### 1. Prerequisites
+- Docker & Docker Compose (recommended)
+- Or: Python 3.10+, Node.js 18+
+
+### 2. Clone the Repository
+```
+git clone https://github.com/ispsitipsiecoder/curson-fit-ai.git
+cd curson-fit-ai
+```
+
+### 3. Set Environment Variables
+- For Gemini AI, set your API key:
+  - In your shell: `export GEMINI_API_KEY=your_gemini_api_key`
+  - Or add to `docker-compose.yml` under backend > environment
+
+### 4. Run with Docker Compose
+```
+docker-compose up --build
+```
+- Frontend: http://localhost:3000
+- Backend: http://localhost:8000
+
+### 5. Run Manually (Dev Mode)
+- **Backend:**
+  ```
+  cd backend/app
+  pip install -r ../requirements.txt
+  uvicorn main:app --reload --host 0.0.0.0 --port 8000
+  ```
+- **Frontend:**
+  ```
+  cd frontend
+  npm install
+  npm start
+  ```
 
 ---
 
-## 📢 Why FitFuel AI?
-FitFuel AI demonstrates the power of artificial intelligence in holistic health management, making it an ideal foundation for next-generation fitness applications.
+## 🤖 AI Assistant (Gemini)
+- Visit the "AI Assistant" page in the app.
+- Enter a question; the backend will query Gemini and return an answer.
 
 ---
 
-> **Ready to get started? Clone the repo, set up your environment, and fuel your fitness journey with AI!** 
+## 🌐 Deployment
+- **Frontend:** Deploy to Vercel (recommended)
+- **Backend:** Deploy to Render, Railway, or similar
+- Set environment variables for production (e.g., `GEMINI_API_KEY`)
+
+---
+
+## 📢 Why Curson Fit AI?
+Curson Fit AI demonstrates a modern, extensible approach to fitness management, combining classic features with AI-powered assistance.
+
+---
+
+> **Ready to get started? Clone the repo, set up your environment, and explore fitness with AI!** 
